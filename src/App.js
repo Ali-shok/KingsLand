@@ -1,5 +1,10 @@
 import React from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import {Helmet} from "react-helmet";
 // Components
 
@@ -8,6 +13,7 @@ import Header from "./components/Sections/Header";
 import Services from "./components/Sections/Services";
 import Contact from "./components/Sections/Contact";
 import Footer from "./components/Sections/Footer";
+import PageNotFound from "./components/Sections/pageNotFound";
 
 export default function App() {
   return (
@@ -27,8 +33,10 @@ export default function App() {
       <TopNavbar />
       <Routes>
         <Route path="/" element={<Header />} />
+        <Route path="/react" element={<Navigate to="/" />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </Router>
