@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/react/static/css/main.32490de5.chunk.css",
+    "main.js": "/react/static/js/main.69f02b50.chunk.js",
+    "main.js.map": "/react/static/js/main.69f02b50.chunk.js.map",
+    "runtime-main.js": "/react/static/js/runtime-main.7e6612ee.js",
+    "runtime-main.js.map": "/react/static/js/runtime-main.7e6612ee.js.map",
+    "static/css/2.eacb11bf.chunk.css": "/react/static/css/2.eacb11bf.chunk.css",
+    "static/js/2.403b36b4.chunk.js": "/react/static/js/2.403b36b4.chunk.js",
+    "static/js/2.403b36b4.chunk.js.map": "/react/static/js/2.403b36b4.chunk.js.map",
+    "static/js/3.63fbc164.chunk.js": "/react/static/js/3.63fbc164.chunk.js",
+    "static/js/3.63fbc164.chunk.js.map": "/react/static/js/3.63fbc164.chunk.js.map",
+    "index.html": "/react/index.html",
+    "static/css/2.eacb11bf.chunk.css.map": "/react/static/css/2.eacb11bf.chunk.css.map",
+    "static/css/main.32490de5.chunk.css.map": "/react/static/css/main.32490de5.chunk.css.map",
+    "static/js/2.403b36b4.chunk.js.LICENSE.txt": "/react/static/js/2.403b36b4.chunk.js.LICENSE.txt",
+    "static/media/home1.7c8f7947.png": "/react/static/media/home1.7c8f7947.png",
+    "static/media/images (3) 2.de929b4c.png": "/react/static/media/images (3) 2.de929b4c.png",
+    "static/media/istockphoto-2025352320-612x612 2 (1).421482f4.png": "/react/static/media/istockphoto-2025352320-612x612 2 (1).421482f4.png",
+    "static/media/mylogo.d119b629.png": "/react/static/media/mylogo.d119b629.png",
+    "static/media/noun-airplane-1065274.213d7bc0.svg": "/react/static/media/noun-airplane-1065274.213d7bc0.svg",
+    "static/media/noun-container-ship-1327952.4c25581e.svg": "/react/static/media/noun-container-ship-1327952.4c25581e.svg",
+    "static/media/noun-container-ship-5297419.18784f71.svg": "/react/static/media/noun-container-ship-5297419.18784f71.svg",
+    "static/media/noun-crane-496204.dec2352d.svg": "/react/static/media/noun-crane-496204.dec2352d.svg",
+    "static/media/noun-freighter-496203.37fd54b3.svg": "/react/static/media/noun-freighter-496203.37fd54b3.svg",
+    "static/media/noun-round-trip-936561.d173dc8f.svg": "/react/static/media/noun-round-trip-936561.d173dc8f.svg",
+    "static/media/pexels-dibert-1117210.4a2e319a.jpg": "/react/static/media/pexels-dibert-1117210.4a2e319a.jpg",
+    "static/media/pexels-tomfisk-3063470.78d58b01.jpg": "/react/static/media/pexels-tomfisk-3063470.78d58b01.jpg",
+    "static/media/slick-theme.css": "/react/static/media/slick.c94f7671.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7e6612ee.js",
+    "static/css/2.eacb11bf.chunk.css",
+    "static/js/2.403b36b4.chunk.js",
+    "static/css/main.32490de5.chunk.css",
+    "static/js/main.69f02b50.chunk.js"
+  ]
+}
