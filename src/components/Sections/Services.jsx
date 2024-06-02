@@ -32,8 +32,6 @@ export default function Services() {
               tirelessly to ensure that your shipments are handled with the
               utmost care and professionalism, providing you with peace of mind
               and exceptional service every step of the way.
-              <br />
-              labore et dolore magna aliquyam erat, sed diam voluptua.
             </p>
           </HeaderInfo>
           <ServiceBoxRow className="flex">
