@@ -1,32 +1,48 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
-// Assets
 import HeaderImage from "../../assets/img/pexels-tomfisk-3063470.jpg";
 import ClientSlider from "../Elements/ClientSlider";
+import {LanguageContext} from "../../context/LanguageContext";
 
 export default function Header() {
+  const {language} = useContext(LanguageContext);
+
+  const translations = {
+    en: {
+      intro: "We are",
+      company: "Kings Land",
+      title: "Leading Shipping Solutions",
+      description: `Our company provides comprehensive shipping services including customs handling, sea freight from 
+        China to the UAE, air freight from the UAE to Syria, and land freight to various Arab countries. We ensure 
+        your shipments are processed smoothly and efficiently.`,
+    },
+    ar: {
+      intro: "نحن",
+      company: "كينجس لاند",
+      title: "حلول الشحن الرائدة",
+      description: `تقدم شركتنا خدمات شحن شاملة بما في ذلك التخليص الجمركي والشحن البحري من الصين إلى الإمارات العربية المتحدة، 
+        والشحن الجوي من الإمارات العربية المتحدة إلى سوريا، والشحن البري إلى مختلف الدول العربية. نحن نضمن معالجة شحناتكم 
+        بسلاسة وكفاءة.`,
+    },
+  };
+
+  const {intro, company, title, description} = translations[language];
+
   return (
-    <div>
+    <div
+      className={`${language === "ar" ? "arabic-text-amiri" : "sans-serif"}`}
+    >
       <Wrapper>
         <Img src={HeaderImage} alt="office" />
       </Wrapper>
       <CompanyInfoSection>
         <div className="container">
           <InfoContent>
-            <h3 className="font15 semiBold">
-              We are<HighlightedText> Kings Land</HighlightedText>
+            <h3 className="font15 semiBold arabic-text-khula">
+              {intro} <HighlightedText>{company}</HighlightedText>
             </h3>
-            <h2 className="font40 extraBold">Leading Shipping Solutions</h2>
-            <p className="font12">
-              Our company provides comprehensive shipping services including
-              customs handling, sea freight from{" "}
-              <HighlightedText>China</HighlightedText> to the{" "}
-              <HighlightedText> UAE</HighlightedText>, air freight from the{" "}
-              <HighlightedText> UAE </HighlightedText>
-              to <HighlightedText>Syria</HighlightedText>, and land freight to
-              various<HighlightedText> Arab countries </HighlightedText>. We
-              ensure your shipments are processed smoothly and efficiently.
-            </p>
+            <h2 className="font40 extraBold">{title}</h2>
+            <p className="font12">{description}</p>
           </InfoContent>
         </div>
       </CompanyInfoSection>
@@ -65,6 +81,7 @@ const Img = styled.img`
     height: 80vh;
   }
 `;
+
 const CompanyInfoSection = styled.section`
   background: #f9f9f9;
   padding: 60px 0;
@@ -96,6 +113,7 @@ const InfoContent = styled.div`
     line-height: 1.6;
   }
 `;
+
 const HighlightedText = styled.span`
   color: #7620ff; /* Change this color to your desired highlight color */
 `;

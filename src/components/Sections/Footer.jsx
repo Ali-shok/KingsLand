@@ -1,35 +1,60 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
-// Assets
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPhone} from "@fortawesome/free-solid-svg-icons";
 import LogoImg from "../../assets/svg/Logo";
+import {Helmet} from "react-helmet";
+import {LanguageContext} from "../../context/LanguageContext";
 
-export default function Contact() {
+export default function Footer() {
+  const {language} = useContext(LanguageContext);
+
+  const translations = {
+    en: {
+      title: "Kings Land",
+      llc: "LLC",
+      copyright: "All Right Reserved",
+      contact: "Contact With Us",
+    },
+    ar: {
+      title: "كينجس لاند",
+      llc: "ش.ذ.م.م",
+      copyright: "جميع الحقوق محفوظة",
+      contact: "تواصل معنا",
+    },
+  };
+
+  const {title, llc, copyright, contact} = translations[language];
+
   const getCurrentYear = () => {
     return new Date().getFullYear();
   };
 
   return (
-    <Wrapper>
+    <Wrapper
+      className={`${language === "ar" ? "arabic-text-amiri" : "sans-serif"}`}
+    >
+      <Helmet>
+        <html lang={language} />
+        <title>{title}</title>
+        <meta name="description" content={`${title} - ${copyright}`} />
+      </Helmet>
       <div className="darkBg">
         <div className="container">
-          <InnerWrapper className="flexSpaceCenter" style={{}}>
+          <InnerWrapper className="flexSpaceCenter">
             <Link className="flexCenter animate pointer" to="/">
               <LogoImg />
-              <Title className="font20 extraBold">كينجس لاند للتجارة</Title>
-              <LLC className="font11">ش.ذ.م.م</LLC>
+              <Title className="font20 extraBold">{title}</Title>
+              <LLC className="font11">{llc}</LLC>
             </Link>
             <StyleP className="whiteColor font13">
               © {getCurrentYear()} -{" "}
-              <span className="purpleColor font13"> Kings Land</span> All Right
-              Reserved
+              <span className="purpleColor font13">{title}</span> {copyright}
             </StyleP>
-
             <Link className="whiteColor animate pointer font13" to="/contact">
               <FontAwesomeIcon icon={faPhone} style={{marginRight: "5px"}} />
-              Contact With Us
+              {contact}
             </Link>
           </InnerWrapper>
         </div>

@@ -1,6 +1,23 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+import {LanguageContext} from "../../context/LanguageContext";
+import {Helmet} from "react-helmet";
 
 const PageNotFound = () => {
+  const {language} = useContext(LanguageContext);
+
+  const translations = {
+    en: {
+      title: "404 - Page Not Found",
+      message: "Sorry, the page you are looking for does not exist.",
+    },
+    ar: {
+      title: "404 - الصفحة غير موجودة",
+      message: "عذراً، الصفحة التي تبحث عنها غير موجودة.",
+    },
+  };
+
+  const {title, message} = translations[language];
+
   const [screenSize, setScreenSize] = useState(getScreenSize());
 
   function getScreenSize() {
@@ -19,7 +36,6 @@ const PageNotFound = () => {
 
     window.addEventListener("resize", handleResize);
 
-    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -46,7 +62,7 @@ const PageNotFound = () => {
     case "iPad":
       style.marginTop = "130px";
       style.padding = "60px";
-      style.minHeight = "calc(100vh - 16vh)";
+      style.minHeight = "calc(100vh - 23vh)";
       break;
     case "mobile":
       style.marginTop = "100px";
@@ -63,9 +79,17 @@ const PageNotFound = () => {
   }
 
   return (
-    <div className="container" style={style}>
-      <h1>404 - Page Not Found</h1>
-      <p>Sorry, the page you are looking for does not exist.</p>
+    <div
+      className={`${language === "ar" ? "arabic-text-amiri" : "sans-serif"}`}
+      style={style}
+    >
+      <Helmet>
+        <html lang={language} />
+        <title>{title}</title>
+        <meta name="description" content={message} />
+      </Helmet>
+      <h1>{title}</h1>
+      <p>{message}</p>
     </div>
   );
 };

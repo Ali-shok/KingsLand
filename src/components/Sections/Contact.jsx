@@ -1,37 +1,77 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faWhatsapp} from "@fortawesome/free-brands-svg-icons";
 import {faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";
-// Assets
 import ContactImg1 from "../../assets/img/home1.png";
 import ContactImg2 from "../../assets/img/istockphoto-2025352320-612x612 2 (1).png";
 import ContactImg3 from "../../assets/img/images (3) 2.png";
+import {LanguageContext} from "../../context/LanguageContext";
+import {Helmet} from "react-helmet";
 
 export default function Contact() {
-  const branches = [
-    {
-      name: "Aleppo ",
-      official: "Fadi Samaan",
-      phone: "+963958889006",
-      address: " Sulaymaniyah Telephone AL Hawaai", // No address provided for this branch
+  const {language} = useContext(LanguageContext);
+
+  const translations = {
+    en: {
+      title: "Let's get in touch",
+      description:
+        "We have branches all around the world ready to serve you. Get in touch with any of our branches.",
+      branches: [
+        {
+          name: "Aleppo",
+          official: "Fadi Samaan",
+          phone: "+963958889006",
+          address: "Sulaymaniyah Telephone AL Hawaai",
+        },
+        {
+          name: "Latakia",
+          official: "Majd Khalil",
+          phone: "+963958889009",
+          address: "Beside Customs Directorate, Al Hamd Mosque Street",
+        },
+        {
+          name: "Dubai",
+          official: "Mahmoud Ismail",
+          phone: "+971566994800",
+          location:
+            "https://www.google.com/maps/place/25%C2%B015'28.9%22N+55%C2%B020'10.8%22E/@25.2580185,55.3385229,17z/data=!3m1!4b1!4m4!3m3!8m2!3d25.2580185!4d55.3363342?hl=ar&entry=ttu",
+          address:
+            "Port Saeed, Building (Acico Gulf Real Estate), Property (602-72), Dubai, United Arab Emirates",
+        },
+      ],
     },
-    {
-      name: "Latakia",
-      official: "Majd Khalil",
-      phone: "+963958889009",
-      address: "Beside Customs Directorate, Al Hamd Mosque Street",
+    ar: {
+      title: "دعونا نتواصل",
+      description:
+        ".لدينا فروع في جميع أنحاء العالم جاهزة لخدمتك تواصل مع أي من فروعنا",
+      branches: [
+        {
+          name: "حلب",
+          official: "فادي سمعان",
+          phone: "+963958889006",
+          address: "سليمانية هاتف الهوائي",
+        },
+        {
+          name: "اللاذقية",
+          official: "مجد خليل",
+          phone: "+963958889009",
+          address: "بجانب مديرية الجمارك، شارع مسجد الحمد",
+        },
+        {
+          name: "دبي",
+          official: "محمود إسماعيل",
+          phone: "+971566994800",
+          location:
+            "https://www.google.com/maps/place/25%C2%B015'28.9%22N+55%C2%B020'10.8%22E/@25.2580185,55.3385229,17z/data=!3m1!4b1!4m4!3m3!8m2!3d25.2580185!4d55.3363342?hl=ar&entry=ttu",
+          address:
+            "ميناء سعيد، مبنى (عقارات الخليج أكيكو)، عقار (602-72)، دبي، الإمارات العربية المتحدة",
+        },
+      ],
     },
-    {
-      name: "Dubai",
-      official: "Mahmoud Ismail",
-      phone: "+971566994800",
-      location:
-        "https://www.google.com/maps/place/25%C2%B015'28.9%22N+55%C2%B020'10.8%22E/@25.2580185,55.3385229,17z/data=!3m1!4b1!4m4!3m3!8m2!3d25.2580185!4d55.3363342?hl=ar&entry=ttu", // Assuming coordinates for example
-      address:
-        "Port Saeed , Bulding (Acico Gulf Real Estate) , Property (602-72), Dubai, United Arab Emirates",
-    },
-  ];
+  };
+
+  const {title, description, branches} = translations[language];
 
   const openWhatsAppChat = (phoneNumber) => {
     const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\+/g, "")}`;
@@ -43,7 +83,15 @@ export default function Contact() {
   };
 
   return (
-    <Wrapper id="contact">
+    <Wrapper
+      className={`${language === "ar" ? "arabic-text-amiri" : "sans-serif"}`}
+      id="contact"
+    >
+      <Helmet>
+        <html lang={language} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+      </Helmet>
       <div className="lightBg">
         <div
           style={{
@@ -53,11 +101,8 @@ export default function Contact() {
           className="container"
         >
           <HeaderInfo>
-            <h1 className="font40 extraBold">Let's get in touch</h1>
-            <p className="font13">
-              We have branches all around the world ready to serve you. Get in
-              touch with any of our branches.
-            </p>
+            <h1 className="font40 extraBold">{title}</h1>
+            <p className="font13">{description}</p>
           </HeaderInfo>
           <div className="row" style={{paddingBottom: "30px"}}>
             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -81,7 +126,7 @@ export default function Contact() {
                           onClick={() => openLocation(branch.location)}
                         >
                           <FontAwesomeIcon icon={faMapMarkerAlt} />
-                          View Location
+                          عرض الموقع
                         </BranchDetail>
                       )}
                     </BranchInfo>

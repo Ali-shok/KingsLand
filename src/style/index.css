@@ -353,3 +353,7 @@ body {
 .gray-text {
   color: #7620ff;
 }
+
+.arabic-text-amiri {
+  font-family: "Amiri", serif;
+}

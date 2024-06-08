@@ -1,14 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import styled from "styled-components";
 import {NavLink, Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faHome, faCogs, faEnvelope} from "@fortawesome/free-solid-svg-icons";
+import {
+  faHome,
+  faCogs,
+  faEnvelope,
+  faLanguage,
+} from "@fortawesome/free-solid-svg-icons";
 // Components
 // Assets
 import LogoIcon from "../../assets/svg/Logo";
+import {LanguageContext} from "../../context/LanguageContext";
 
 export default function TopNavbar() {
   const [y, setY] = useState(window.scrollY);
+  const {language, toggleLanguage} = useContext(LanguageContext);
 
   useEffect(() => {
     const handleScroll = () => setY(window.scrollY);
@@ -18,41 +25,69 @@ export default function TopNavbar() {
     };
   }, []);
 
+  const translations = {
+    en: {
+      home: "Home",
+      services: "Services",
+      contact: "Contact",
+      title: "Kings Land",
+      llc: "TRADING L.L.C",
+    },
+    ar: {
+      home: "الصفحة الرئيسية",
+      services: "الخدمات",
+      contact: "اتصل بنا",
+      title: "كينجس لاند ",
+      llc: "ش.ذ.م.م",
+    },
+  };
+
+  const {home, services, contact, title, llc} = translations[language];
+
   return (
     <>
       <Wrapper
-        className="flexCenter animate darkBg"
+        className={`flexCenter animate darkBg ${
+          language === "ar" ? "arabic-text-amiri" : "sans-serif"
+        }`}
         style={y > 100 ? {height: "60px"} : {height: "80px"}}
       >
         <NavInner className="container whiteColor flexSpaceCenter ">
           <Link className="flexNullCenter pointer" to="/">
             <LogoIcon />
-            <Title className="font20 extraBold"> Kings Land</Title>
-            <LLC className="font11 ">TRADING L.L.C</LLC>
+            <Title className="font20 extraBold">{title}</Title>
+            <LLC className="font11 ">{llc}</LLC>
           </Link>
 
           <UlWrapper className="flexNullCenter">
             <li className="semiBold font15 pointer">
               <NavLinkStyled to="/" end>
                 <FontAwesomeIcon icon={faHome} />
-                <NavText>Home</NavText>
+                <NavText>{home}</NavText>
               </NavLinkStyled>
             </li>
             <li className="semiBold font15 pointer">
               <NavLinkStyled to="/services">
                 <FontAwesomeIcon icon={faCogs} />
-                <NavText>Services</NavText>
+                <NavText>{services}</NavText>
               </NavLinkStyled>
             </li>
 
             <li className="semiBold font15 pointer">
               <NavLinkStyled to="/contact">
                 <FontAwesomeIcon icon={faEnvelope} />
-                <NavText>Contact</NavText>
+                <NavText>{contact}</NavText>
               </NavLinkStyled>
             </li>
           </UlWrapper>
-          <UlWrapperRight className="flexNullCenter"></UlWrapperRight>
+          <UlWrapperRight className="flexNullCenter">
+            <li className="semiBold font15 pointer">
+              <LanguageToggle onClick={toggleLanguage}>
+                <FontAwesomeIcon icon={faLanguage} />
+                <NavText>{language === "en" ? "AR" : "EN"}</NavText>
+              </LanguageToggle>
+            </li>
+          </UlWrapperRight>
         </NavInner>
       </Wrapper>
     </>
@@ -96,9 +131,21 @@ const UlWrapper = styled.ul`
 `;
 
 const UlWrapperRight = styled.ul`
-  display: none;
-  @media (min-width: 769px) {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
     display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    li {
+      margin: 0 5px;
+    }
   }
 `;
 
@@ -151,6 +198,7 @@ const Title = styled.h1`
     display: none;
   }
 `;
+
 const LLC = styled.span`
   margin-left: 5px;
   align-self: flex-end;
@@ -167,5 +215,26 @@ const LLC = styled.span`
   }
   @media (max-width: 360px) {
     display: none;
+  }
+`;
+
+const LanguageToggle = styled.div`
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  cursor: pointer;
+
+  &:hover {
+    color: #707070; /* Change hover color */
+  }
+
+  svg {
+    margin-right: 8px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 5px 10px;
   }
 `;
