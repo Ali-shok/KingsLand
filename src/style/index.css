@@ -357,3 +357,28 @@ body {
 .arabic-text-amiri {
   font-family: "Amiri", serif;
 }
+.sans-serif {
+  font-family: sans-serif;
+}
+.logo {
+  margin: 0;
+  height: 50px;
+  width: auto;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    height: 40px; /* iPad */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    height: 25px; /* Mobile */
+  }
+}
+@media (max-width: 360px) {
+  .logo {
+    height: 10px; /* Mobile */
+  }
+}

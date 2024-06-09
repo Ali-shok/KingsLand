@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import ServiceBox from "../Elements/ServiceBox";
 import FullButton from "../Buttons/FullButton";
 import AddImage1 from "../../assets/img/pexels-dibert-1117210.jpg";
@@ -36,16 +36,16 @@ export default function Services() {
       headerTitle: "خدماتنا الرائعة",
       headerDescription: `تتخصص شركتنا في تقديم حلول لوجستية ونقل شاملة مصممة لتلبية الاحتياجات المتنوعة لعملائنا. نقدم مجموعة من 
         الخدمات بما في ذلك التخليص الجمركي والشحن البحري والشحن الجوي والشحن البري، لضمان تسليم البضائع بكفاءة وموثوقية على المستويين 
-        الإقليمي والدولي. يعمل فريقنا المتفاني بلا كلل لضمان معالجة شحناتكم بأقصى درجات العناية والاحترافية، مما يوفر لكم راحة البال 
-        وخدمة استثنائية في كل خطوة.`,
+        الإقليمي والدولي، يعمل فريقنا المتفاني بلا كلل لضمان معالجة شحناتكم بأقصى درجات العناية والاحترافية، مما يوفر لكم راحة البال 
+        وخدمة استثنائية في كل خطوة`,
       service1Title: "خدمات الجمارك",
-      service1Subtitle: "نقوم بإجراءات الجمارك لضمان معالجة شحناتكم بسلاسة.",
+      service1Subtitle: " نقوم بإجراءات الجمارك لضمان معالجة شحناتكم بسلاسة",
       service2Title: "الشحن البحري",
-      service2Subtitle: `نقدم خدمات الشحن البحري لنقل كميات كبيرة من البضائع من الصين إلى الإمارات.`,
+      service2Subtitle: ` نقدم خدمات الشحن البحري لنقل كميات كبيرة من البضائع من الصين إلى الإمارات `,
       service3Title: "الشحن الجوي",
-      service3Subtitle: `نقدم خدمات الشحن الجوي لضمان النقل السريع والآمن للبضائع من الإمارات إلى سوريا.`,
+      service3Subtitle: `نقدم خدمات الشحن الجوي لضمان النقل السريع والآمن للبضائع من الإمارات إلى سوريا`,
       service4Title: "الشحن البري",
-      service4Subtitle: `نقدم خدمات الشحن البري لنقل البضائع بمرونة واقتصادية إلى مختلف الدول العربية.`,
+      service4Subtitle: `نقدم خدمات الشحن البري لنقل البضائع بمرونة واقتصادية إلى مختلف الدول العربية`,
       companySectionTitle: "شريككم الموثوق في الشحن",
       companySectionDescription: `نحن شركة شحن رائدة ملتزمة بتقديم حلول لوجستية شاملة. تشمل خدماتنا الشحن البحري والجوي والبري، لضمان 
         تسليم البضائع بأمان وفي الوقت المحدد. مع التزامنا بالتميز، نتولى جميع إجراءات الجمارك بسلاسة، مما يجعل تجربتكم في الشحن خالية من المتاعب.`,
@@ -80,6 +80,28 @@ export default function Services() {
     )}`;
     window.open(whatsappUrl, "_blank");
   };
+  const highlightCountries = (text, language) => {
+    const countryNames =
+      language === "en"
+        ? ["China", "UAE", "Syria", "Arab countries"]
+        : [
+            "الإمارات",
+            "الصين",
+            "الإمارات العربية المتحدة",
+            "سوريا",
+            "الدول العربية",
+          ];
+
+    return text
+      .split(new RegExp(`(${countryNames.join("|")})`, "g"))
+      .map((part, index) =>
+        countryNames.includes(part) ? (
+          <HighlightedText key={index}>{part}</HighlightedText>
+        ) : (
+          part
+        )
+      );
+  };
 
   return (
     <Wrapper id="services">
@@ -101,21 +123,21 @@ export default function Services() {
               <ServiceBox
                 icon="faShip"
                 title={service2Title}
-                subtitle={service2Subtitle}
+                subtitle={highlightCountries(service2Subtitle, language)}
               />
             </ServiceBoxWrapper>
             <ServiceBoxWrapper>
               <ServiceBox
                 icon="faPlane"
                 title={service3Title}
-                subtitle={service3Subtitle}
+                subtitle={highlightCountries(service3Subtitle, language)}
               />
             </ServiceBoxWrapper>
             <ServiceBoxWrapper>
               <ServiceBox
                 icon="faTruck"
                 title={service4Title}
-                subtitle={service4Subtitle}
+                subtitle={highlightCountries(service4Subtitle, language)}
               />
             </ServiceBoxWrapper>
           </ServiceBoxRow>
@@ -144,7 +166,7 @@ export default function Services() {
                 <AddRightInner>
                   <div className="flexCenter">
                     <AddImgWrapp1 className="flexCenter">
-                      <img src={AddImage1} alt="office" />
+                      <BlurImg src={AddImage1} alt="Container" />
                     </AddImgWrapp1>
                   </div>
                 </AddRightInner>
@@ -252,4 +274,28 @@ const AddImgWrapp1 = styled.div`
       height: 400px;
     }
   }
+`;
+const HighlightedText = styled.span`
+  color: #7620ff; /* Change this color to your desired highlight color */
+`;
+const blurIn = keyframes`
+  0% {
+    filter: blur(20px);
+    opacity: 0;
+  }
+  50% {
+    filter: blur(10px);
+    opacity: 0.5;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+`;
+
+const BlurImg = styled.img`
+  width: 100%;
+  object-fit: cover;
+  z-index: 9;
+  animation: ${blurIn} 2s ease-out forwards;
 `;

@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import HeaderImage from "../../assets/img/pexels-tomfisk-3063470.jpg";
 import ClientSlider from "../Elements/ClientSlider";
 import {LanguageContext} from "../../context/LanguageContext";
@@ -20,9 +20,9 @@ export default function Header() {
       intro: "نحن",
       company: "كينجس لاند",
       title: "حلول الشحن الرائدة",
-      description: `تقدم شركتنا خدمات شحن شاملة بما في ذلك التخليص الجمركي والشحن البحري من الصين إلى الإمارات العربية المتحدة، 
-        والشحن الجوي من الإمارات العربية المتحدة إلى سوريا، والشحن البري إلى مختلف الدول العربية. نحن نضمن معالجة شحناتكم 
-        بسلاسة وكفاءة.`,
+      description: `تقدم شركتنا خدمات شحن شاملة بما في ذلك التخليص الجمركي والشحن البحري من الصين إلى الإمارات العربية المتحدة،
+الشحن الجوي من الإمارات العربية المتحدة إلى سوريا، والشحن البري إلى مختلف الدول العربية. نحن نضمن معالجة شحناتكم
+بسلاسة وكفاءة.`,
     },
   };
 
@@ -33,7 +33,7 @@ export default function Header() {
       className={`${language === "ar" ? "arabic-text-amiri" : "sans-serif"}`}
     >
       <Wrapper>
-        <Img src={HeaderImage} alt="office" />
+        <BlurImg src={HeaderImage} alt="office" />
       </Wrapper>
       <CompanyInfoSection>
         <div className="container">
@@ -65,11 +65,27 @@ const Wrapper = styled.section`
   padding-right: 0;
 `;
 
-const Img = styled.img`
+const blurIn = keyframes`
+  0% {
+    filter: blur(20px);
+    opacity: 0;
+  }
+  50% {
+    filter: blur(10px);
+    opacity: 0.5;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+`;
+
+const BlurImg = styled.img`
   width: 100%;
   height: 75vh;
   object-fit: cover;
   z-index: 9;
+  animation: ${blurIn} 2s ease-out forwards;
 
   @media (max-width: 1200px) {
     height: 80vh;

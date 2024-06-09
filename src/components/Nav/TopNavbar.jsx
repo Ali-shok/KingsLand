@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext} from "react";
 import styled from "styled-components";
 import {NavLink, Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import AbovoLogo from "../../assets/svg/AboveLogo";
 import {
   faHome,
   faCogs,
@@ -10,7 +11,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 // Components
 // Assets
-import LogoIcon from "../../assets/svg/Logo";
 import {LanguageContext} from "../../context/LanguageContext";
 
 export default function TopNavbar() {
@@ -42,7 +42,7 @@ export default function TopNavbar() {
     },
   };
 
-  const {home, services, contact, title, llc} = translations[language];
+  const {home, services, contact} = translations[language];
 
   return (
     <>
@@ -54,9 +54,7 @@ export default function TopNavbar() {
       >
         <NavInner className="container whiteColor flexSpaceCenter ">
           <Link className="flexNullCenter pointer" to="/">
-            <LogoIcon />
-            <Title className="font20 extraBold">{title}</Title>
-            <LLC className="font11 ">{llc}</LLC>
+            <AbovoLogo />
           </Link>
 
           <UlWrapper className="flexNullCenter">
@@ -180,41 +178,6 @@ const NavText = styled.span`
 
   @media (max-width: 768px) {
     display: none; /* Hide text on smaller screens */
-  }
-`;
-
-const Title = styled.h1`
-  font-size: 20px;
-
-  @media (max-width: 768px) {
-    font-size: 18px;
-  }
-  @media (max-width: 480px) {
-    font-size: 10px;
-    margin-left: 5px;
-    margin-right: 0px;
-  }
-  @media (max-width: 300px) {
-    display: none;
-  }
-`;
-
-const LLC = styled.span`
-  margin-left: 5px;
-  align-self: flex-end;
-  padding-bottom: 10px;
-
-  @media (max-width: 768px) {
-    font-size: 12px;
-    align-self: flex-end;
-    margin-left: 0px;
-  }
-  @media (max-width: 480px) {
-    font-size: 6px;
-    align-self: flex-end;
-  }
-  @media (max-width: 360px) {
-    display: none;
   }
 `;
 

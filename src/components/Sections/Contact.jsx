@@ -1,11 +1,11 @@
 import React, {useContext} from "react";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faWhatsapp} from "@fortawesome/free-brands-svg-icons";
 import {faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";
-import ContactImg1 from "../../assets/img/home1.png";
-import ContactImg2 from "../../assets/img/istockphoto-2025352320-612x612 2 (1).png";
-import ContactImg3 from "../../assets/img/images (3) 2.png";
+import ContactImg1 from "../../assets/img/pexels-saturnus99-11213541.jpg";
+import ContactImg2 from "../../assets/img/pexels-quintingellar-2199293.jpg";
+import ContactImg3 from "../../assets/img/pexels-chanaka-318741-906494 (1).jpg";
 import {LanguageContext} from "../../context/LanguageContext";
 import {Helmet} from "react-helmet";
 
@@ -16,7 +16,7 @@ export default function Contact() {
     en: {
       title: "Let's get in touch",
       description:
-        "We have branches all around the world ready to serve you. Get in touch with any of our branches.",
+        "We have branches ready to serve you. Get in touch with any of our branches.",
       branches: [
         {
           name: "Aleppo",
@@ -38,13 +38,13 @@ export default function Contact() {
             "https://www.google.com/maps/place/25%C2%B015'28.9%22N+55%C2%B020'10.8%22E/@25.2580185,55.3385229,17z/data=!3m1!4b1!4m4!3m3!8m2!3d25.2580185!4d55.3363342?hl=ar&entry=ttu",
           address:
             "Port Saeed, Building (Acico Gulf Real Estate), Property (602-72), Dubai, United Arab Emirates",
+          end: "View Location",
         },
       ],
     },
     ar: {
       title: "دعونا نتواصل",
-      description:
-        ".لدينا فروع في جميع أنحاء العالم جاهزة لخدمتك تواصل مع أي من فروعنا",
+      description: ".لدينا فروع جاهزة لخدمتك تواصل مع أي من فروعنا",
       branches: [
         {
           name: "حلب",
@@ -66,6 +66,7 @@ export default function Contact() {
             "https://www.google.com/maps/place/25%C2%B015'28.9%22N+55%C2%B020'10.8%22E/@25.2580185,55.3385229,17z/data=!3m1!4b1!4m4!3m3!8m2!3d25.2580185!4d55.3363342?hl=ar&entry=ttu",
           address:
             "ميناء سعيد، مبنى (عقارات الخليج أكيكو)، عقار (602-72)، دبي، الإمارات العربية المتحدة",
+          end: "عرض الموقع",
         },
       ],
     },
@@ -126,7 +127,7 @@ export default function Contact() {
                           onClick={() => openLocation(branch.location)}
                         >
                           <FontAwesomeIcon icon={faMapMarkerAlt} />
-                          عرض الموقع
+                          {branch.end}
                         </BranchDetail>
                       )}
                     </BranchInfo>
@@ -139,17 +140,42 @@ export default function Contact() {
               style={{overflowY: "auto"}}
             >
               <div style={{width: "50%"}} className="flexNullCenter flexColumn">
-                <ContactImgBox>
-                  <img src={ContactImg1} alt="office" className="radius6" />
-                </ContactImgBox>
-                <ContactImgBox>
-                  <img src={ContactImg2} alt="office" className="radius6" />
-                </ContactImgBox>
+                <div
+                  className="image-container"
+                  style={{overflow: "hidden", objectFit: "cover"}}
+                >
+                  <ContactImgBox>
+                    <BlurImg
+                      src={ContactImg1}
+                      alt="plane"
+                      className="radius6"
+                    />
+                  </ContactImgBox>
+                </div>
+                <div
+                  className="image-container"
+                  style={{overflow: "hidden", objectFit: "cover"}}
+                >
+                  <ContactImgBox>
+                    <BlurImg
+                      src={ContactImg2}
+                      alt="office"
+                      className="radius6"
+                    />
+                  </ContactImgBox>
+                </div>
               </div>
               <div style={{width: "50%"}}>
                 <div style={{marginTop: "100px"}}>
-                  <div className="image-container" style={{overflow: "hidden"}}>
-                    <img src={ContactImg3} alt="office" className="radius6" />
+                  <div
+                    className="image-container"
+                    style={{overflow: "hidden", objectFit: "cover"}}
+                  >
+                    <BlurImg
+                      src={ContactImg3}
+                      alt="Containers"
+                      className="radius6"
+                    />
                   </div>
                 </div>
               </div>
@@ -221,7 +247,28 @@ const BranchDetail = styled.p`
 const ContactImgBox = styled.div`
   margin: 10px 0;
   img {
-    width: 100%;
+    width: 90%;
     border-radius: 6px;
   }
+`;
+const blurIn = keyframes`
+  0% {
+    filter: blur(20px);
+    opacity: 0;
+  }
+  50% {
+    filter: blur(10px);
+    opacity: 0.5;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+`;
+
+const BlurImg = styled.img`
+  width: 100%;
+  object-fit: cover;
+  z-index: 9;
+  animation: ${blurIn} 2s ease-out forwards;
 `;
