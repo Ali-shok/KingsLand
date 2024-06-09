@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Page Not Found</title>
+    <meta http-equiv="refresh" content="0;url=/" />
+    <script type="text/javascript">
+      // Redirect to the correct route based on the URL path
+      (function () {
+        var path = window.location.pathname;
+        var search = window.location.search;
+        var hash = window.location.hash;
+        var target = path + search + hash;
+        window.location.replace(window.location.origin + target);
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>
