@@ -6,6 +6,28 @@ import {LanguageContext} from "../../context/LanguageContext";
 
 export default function Header() {
   const {language} = useContext(LanguageContext);
+  const highlightCountries = (text, language) => {
+    const countryNames =
+      language === "en"
+        ? ["China", "UAE", "Syria", "Arab countries"]
+        : [
+            "الإمارات",
+            "الصين",
+            "الإمارات العربية المتحدة",
+            "سوريا",
+            "الدول العربية",
+          ];
+
+    return text
+      .split(new RegExp(`(${countryNames.join("|")})`, "g"))
+      .map((part, index) =>
+        countryNames.includes(part) ? (
+          <HighlightedText key={index}>{part}</HighlightedText>
+        ) : (
+          part
+        )
+      );
+  };
 
   const translations = {
     en: {
@@ -22,7 +44,7 @@ export default function Header() {
       title: "حلول الشحن الرائدة",
       description: `تقدم شركتنا خدمات شحن شاملة بما في ذلك التخليص الجمركي والشحن البحري من الصين إلى الإمارات العربية المتحدة،
 الشحن الجوي من الإمارات العربية المتحدة إلى سوريا، والشحن البري إلى مختلف الدول العربية. نحن نضمن معالجة شحناتكم
-بسلاسة وكفاءة.`,
+بسلاسة وكفاءة`,
     },
   };
 
@@ -42,7 +64,9 @@ export default function Header() {
               {intro} <HighlightedText>{company}</HighlightedText>
             </h3>
             <h2 className="font40 extraBold">{title}</h2>
-            <p className="font12">{description}</p>
+            <p className="font12">
+              {highlightCountries(description, language)}
+            </p>
           </InfoContent>
         </div>
       </CompanyInfoSection>
@@ -73,7 +97,7 @@ const blurIn = keyframes`
   50% {
     filter: blur(10px);
     opacity: 0.5;
-  }
+}
   100% {
     filter: blur(0);
     opacity: 1;
