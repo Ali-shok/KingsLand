@@ -50,7 +50,7 @@ export default function Contact() {
           name: "حلب",
           official: "فادي سمان",
           phone: "+963958889006",
-          address: "سليمانية هاتف الهوائي",
+          address: "سليمانية تليفون الهوائي",
         },
         {
           name: "اللاذقية",

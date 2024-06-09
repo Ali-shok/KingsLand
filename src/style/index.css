@@ -374,7 +374,7 @@ body {
 
 @media (max-width: 480px) {
   .logo {
-    height: 25px; /* Mobile */
+    height: 30px; /* Mobile */
   }
 }
 @media (max-width: 360px) {
