@@ -362,7 +362,7 @@ body {
 }
 .logo {
   margin: 0;
-  height: 50px;
+  height: 60px;
   width: auto;
 }
 
@@ -379,6 +379,6 @@ body {
 }
 @media (max-width: 360px) {
   .logo {
-    height: 10px; /* Mobile */
+    height: 20px; /* Mobile */
   }
 }
