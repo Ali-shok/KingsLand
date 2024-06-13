@@ -19,6 +19,16 @@ export default function Contact() {
         "We have branches ready to serve you. Get in touch with any of our branches.",
       branches: [
         {
+          name: "Dubai",
+          official: "Mahmoud Ismail",
+          phone: "+971566994800",
+          location:
+            "https://www.google.com/maps/place/25%C2%B015'28.9%22N+55%C2%B020'10.8%22E/@25.2580185,55.3385229,17z/data=!3m1!4b1!4m4!3m3!8m2!3d25.2580185!4d55.3363342?hl=ar&entry=ttu",
+          address:
+            "Port Saeed, Building (Acico Gulf Real Estate), Property (602-72), Dubai, United Arab Emirates",
+          end: "View Location",
+        },
+        {
           name: "Aleppo",
           official: "Fadi Samaan",
           phone: "+963958889006",
@@ -30,22 +40,22 @@ export default function Contact() {
           phone: "+963958889009",
           address: "Beside Customs Directorate, Al Hamd Mosque Street",
         },
-        {
-          name: "Dubai",
-          official: "Mahmoud Ismail",
-          phone: "+971566994800",
-          location:
-            "https://www.google.com/maps/place/25%C2%B015'28.9%22N+55%C2%B020'10.8%22E/@25.2580185,55.3385229,17z/data=!3m1!4b1!4m4!3m3!8m2!3d25.2580185!4d55.3363342?hl=ar&entry=ttu",
-          address:
-            "Port Saeed, Building (Acico Gulf Real Estate), Property (602-72), Dubai, United Arab Emirates",
-          end: "View Location",
-        },
       ],
     },
     ar: {
       title: "دعونا نتواصل",
       description: ".لدينا فروع جاهزة لخدمتك تواصل مع أي من فروعنا",
       branches: [
+        {
+          name: "دبي",
+          official: "محمود إسماعيل",
+          phone: "+971566994800",
+          location:
+            "https://www.google.com/maps/place/25%C2%B015'28.9%22N+55%C2%B020'10.8%22E/@25.2580185,55.3385229,17z/data=!3m1!4b1!4m4!3m3!8m2!3d25.2580185!4d55.3363342?hl=ar&entry=ttu",
+          address:
+            "دبي ، الامارات العربية المتحدة ، شارع بور سعيد ، مبنى (مجمع اسيكو للاعمال) ، عقار (72-602)",
+          end: "عرض الموقع",
+        },
         {
           name: "حلب",
           official: "فادي سمان",
@@ -57,16 +67,6 @@ export default function Contact() {
           official: "مجد خليل",
           phone: "+963958889009",
           address: "بجانب مديرية الجمارك، شارع مسجد الحمد",
-        },
-        {
-          name: "دبي",
-          official: "محمود إسماعيل",
-          phone: "+971566994800",
-          location:
-            "https://www.google.com/maps/place/25%C2%B015'28.9%22N+55%C2%B020'10.8%22E/@25.2580185,55.3385229,17z/data=!3m1!4b1!4m4!3m3!8m2!3d25.2580185!4d55.3363342?hl=ar&entry=ttu",
-          address:
-            "دبي ، الامارات العربية المتحدة ، شارع بور سعيد ، مبنى (مجمع اسيكو للاعمال) ، عقار (72-602)",
-          end: "عرض الموقع",
         },
       ],
     },

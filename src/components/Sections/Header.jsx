@@ -34,17 +34,13 @@ export default function Header() {
       intro: "We are",
       company: "Kings Land",
       title: "Leading Shipping Solutions",
-      description: `Our company provides comprehensive shipping services including customs handling, sea freight from 
-        China to the UAE, air freight from the UAE to Syria, and land freight to various Arab countries. We ensure 
-        your shipments are processed smoothly and efficiently.`,
+      description: `Our company provides land, sea and air freight and customs clearance services.`,
     },
     ar: {
       intro: "نحن",
       company: "كينجس لاند",
       title: "حلول الشحن الرائدة",
-      description: `تقدم شركتنا خدمات شحن شاملة بما في ذلك التخليص الجمركي والشحن البحري من الصين إلى الإمارات العربية المتحدة،
-الشحن الجوي من الإمارات العربية المتحدة إلى سوريا، والشحن البري إلى مختلف الدول العربية. نحن نضمن معالجة شحناتكم
-بسلاسة وكفاءة`,
+      description: `تقدم شركتنا خدمات الشحن  البري والبحري والجوي  والتخليص الجمركي`,
     },
   };
 
