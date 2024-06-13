@@ -9,13 +9,26 @@ export default function Header() {
   const highlightCountries = (text, language) => {
     const countryNames =
       language === "en"
-        ? ["China", "UAE", "Syria", "Arab countries"]
+        ? [
+            "China",
+            "UAE",
+            "Syria",
+            "Arab countries",
+            "land",
+            "sea",
+            "air",
+            "customs",
+          ]
         : [
             "الإمارات",
             "الصين",
             "الإمارات العربية المتحدة",
             "سوريا",
             "الدول العربية",
+            "البري",
+            "البحري",
+            "الجوي",
+            "الجمركي",
           ];
 
     return text
