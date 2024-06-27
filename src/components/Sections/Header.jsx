@@ -3,6 +3,7 @@ import styled, {keyframes} from "styled-components";
 import HeaderImage from "../../assets/img/pexels-tomfisk-3063470.jpg";
 import ClientSlider from "../Elements/ClientSlider";
 import {LanguageContext} from "../../context/LanguageContext";
+import {Helmet} from "react-helmet";
 
 export default function Header() {
   const {language} = useContext(LanguageContext);
@@ -63,6 +64,13 @@ export default function Header() {
     <div
       className={`${language === "ar" ? "arabic-text-amiri" : "sans-serif"}`}
     >
+      <Helmet>
+        <title>Kings Land - Leading Shipping Solutions</title>
+        <meta
+          name="description"
+          content="Kings Land offers leading shipping solutions for customs handling, sea freight, air freight, and land freight across various Arab countries."
+        />
+      </Helmet>
       <Wrapper>
         <BlurImg src={HeaderImage} alt="office" />
       </Wrapper>
